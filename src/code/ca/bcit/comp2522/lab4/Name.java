@@ -1,3 +1,5 @@
+package ca.bcit.comp2522.lab4;
+
 public class Name
 {   private final String firstName;
     private final String lastName;
