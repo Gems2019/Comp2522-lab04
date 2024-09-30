@@ -1,10 +1,6 @@
 
 /**
- * This class models date formats.
- * Firstly, checks the validation of year, month, day if they are correct in the range, including checks leap year.
- * Secondly, finds a day of week with calculation using year,month,day ( Calculation formula is explained in the method
- * getDayOfTheWeek() between the every step)
- * Lastly, printing the date in two different formats ("YYYY-MM-DD" and "Month(in String) DD, YYYY").
+ *
  * @author Gem Baojimin sha
  * @author
  * @version 1.0
@@ -61,9 +57,9 @@ public class Date {
      * @param day   will be assigned to the instance data: day
      */
     public Date(final int year, final int month, final int day) {
-        isYearValid(year);
-        isMonthValid(month);
-        isDayValid(year, month, day);
+        validateYear(year);
+        validateMonth(month);
+        validateDate(year, month, day);
 
         this.year = year;
         this.month = month;
@@ -175,7 +171,7 @@ public class Date {
      * @param year check if the year is valid
      * @throws IllegalArgumentException if the month is out of range and empty
      */
-    private static void isYearValid(final int year) throws IllegalArgumentException {
+    private static void validateYear(final int year) throws IllegalArgumentException {
         if (STARTING_YEAR > year || CURRENT_YEAR < year) {
             throw new IllegalArgumentException("You must enter the correct year");
         }
@@ -197,7 +193,7 @@ public class Date {
      * @param month check if the month is valid
      * @throws IllegalArgumentException if the month is null or blank
      */
-    private static void isMonthValid(final int month) throws IllegalArgumentException {
+    private static void validateMonth(final int month) throws IllegalArgumentException {
 
         if (JAN > month || DEC < month) {
             throw new IllegalArgumentException("You must enter the month between " + JAN + "  to 12");
@@ -209,7 +205,7 @@ public class Date {
      * @param day check if the day is valid
      * @throws IllegalArgumentException if the day is out of range
      */
-    private static void isDayValid(final int year, final int month, final int day) throws IllegalArgumentException {
+    private static void validateDate(final int year, final int month, final int day) throws IllegalArgumentException {
         final int maxDaysOfMonth;
 
         maxDaysOfMonth = numbOfDaysInMonth(month, year);
@@ -304,13 +300,13 @@ public class Date {
             }
         }
         // Step1: Getting last two digits of year.
-        int stepOne = year % hundred;
+        int stepOne = year % YEARS_PER_CENTURY;
 
         // Step2: Getting the number of twelves in last two digits of year.
-        int stepTwo = stepOne / twelve;
+        int stepTwo = stepOne / STEP_1_CONSTANT;
 
         // Step3: Getting the remainder from stepTwo(the numbers of twelves in last two digits of year).
-        int stepThree = stepOne % twelve;
+        int stepThree = stepOne % STEP_1_CONSTANT;
 
         // Step4: Getting the number of fours from stepThree.
         int stepFour = stepThree / four;
@@ -324,7 +320,7 @@ public class Date {
         switch (month) {
             case APR:
             case JULY:
-                stepSix = stepFive + zero;
+                stepSix = stepFive + step0constant;
                 break;
             case JAN:
             case OCT:
@@ -357,7 +353,7 @@ public class Date {
 
         // Creating a switch to return the days of the week (as Strings), aligned with their corresponding day codes.
         switch (stepSeven) {
-            case zero:
+            case step0constant:
                 dayOfWeek = "Saturday";
                 break;
             case one:

@@ -7,8 +7,11 @@ public class Person
     private final Date dateOfDeath;
 
     public Person(Name name, Date dateOfBirth, Date dateOfDeath) {
+
+
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.dateOfDeath = dateOfDeath;
     }
+
 }
