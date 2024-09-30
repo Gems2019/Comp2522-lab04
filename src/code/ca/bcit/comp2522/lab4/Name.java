@@ -1,6 +1,6 @@
 package ca.bcit.comp2522.lab4;
 
-public class Name
+public class Name implements Printable
 {   private final String firstName;
     private final String lastName;
     private static final int NAME_LEN= 50;
