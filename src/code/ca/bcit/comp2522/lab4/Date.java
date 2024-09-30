@@ -6,12 +6,13 @@ package ca.bcit.comp2522.lab4;
  * Secondly, finds a day of week with calculation using year,month,day ( Calculation formula is explained in the method
  * getDayOfTheWeek() between the every step)
  * Lastly, printing the date in two different formats ("YYYY-MM-DD" and "Month(in String) DD, YYYY").
+ *
  * @author Gem Baojimin sha
- * @author
+ * @author Yuho Lim
  * @version 1.0
  */
 
-public class Date {
+public abstract class Date implements Comparable<Date> {
 
     // Creating static variables to set a range of year.
     private static final int STARTING_YEAR = 1;
@@ -389,5 +390,33 @@ public class Date {
         }
 
         return dayOfWeek;
+    }
+
+    /**
+     * Compares this Date object with the specified Date object for order.
+     * Returns a negative integer, zero, or a positive integer as this Date
+     * is less than, equal to, or greater than the specified Date.
+     *
+     * @param other the Date object to be compared
+     * @return a negative integer if this Date is earlier than the specified Date,
+     *         zero if both dates are the same, or a positive integer if this Date
+     *         is later than the specified Date
+     */
+    @Override
+    public int compareTo(final Date other) {
+
+        if (this.year != other.year) {
+
+            return Integer.compare(this.year, other.year);
+
+        }
+
+        if (this.month != other.month) {
+
+            return Integer.compare(this.month, other.month);
+
+        }
+
+        return Integer.compare(this.day, other.day);
     }
 }
