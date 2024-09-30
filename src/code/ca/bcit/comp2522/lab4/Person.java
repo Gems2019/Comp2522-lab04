@@ -1,3 +1,5 @@
+package ca.bcit.comp2522.lab4;
+
 public class Person
 {   /* create variable name */
     private final Name name;

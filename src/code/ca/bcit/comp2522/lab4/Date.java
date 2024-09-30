@@ -1,3 +1,4 @@
+package ca.bcit.comp2522.lab4;
 
 /**
  * This class models date formats.
@@ -52,6 +53,10 @@ public class Date {
     private final int day;
     private final int month;
     private final int year;
+
+    private static final int zero = 0;
+    private static final int hundred = 100;
+    private static final int twelve = 12;
 
     /**
      * Creating a constructor.
