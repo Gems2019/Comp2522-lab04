@@ -1,10 +1,9 @@
 package ca.bcit.comp2522.lab4;
 
-public abstract class Name implements Printable
-{
+public class Name {
     private final String firstName;
     private final String lastName;
-    private static final int NAME_LEN = 50;
+    private static final int NAME_LEN= 50;
 
 
     public Name(final String firstName, final String lastName) {
@@ -25,10 +24,6 @@ public abstract class Name implements Printable
         return firstName + " " + lastName;
     }
 
-    public final void display(){
-        System.out.println(getFullName());
-    }
-
     private static void validateFirstName(final String firstName) {
         if (firstName == null || firstName.isBlank() || firstName.length() > NAME_LEN) {
             throw new IllegalArgumentException("bad First Name: " + firstName);
@@ -39,6 +34,16 @@ public abstract class Name implements Printable
         if (lastName == null || lastName.isBlank() || lastName.length() > NAME_LEN) {
             throw new IllegalArgumentException("bad Last Name: " + lastName);
         }
+    }
+
+    /**
+     * Overrides the toString method to return the full name.
+     *
+     * @return the full name in "First Last" format
+     */
+    @Override
+    public String toString() {
+        return getFullName();
     }
 
 

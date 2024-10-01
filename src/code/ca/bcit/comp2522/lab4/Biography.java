@@ -1,13 +1,17 @@
+package ca.bcit.comp2522.lab4;
+
+import ca.bcit.comp2522.lab4.Book;
+
 public class Biography extends Book implements Printable {
 
     // Data member
     private final Person subject;
 
     // Constructor
-    public Biography(private String title, 
-                private int yearPublished, 
-                private Author author, 
-                private Person subject) {
+    public Biography(String title,
+                    int yearPublished,
+                     Author author,
+                     Person subject) {
         super(title, yearPublished, author); // Call the parent class (Book) constructor
         this.subject = validateSubject(subject);
     }

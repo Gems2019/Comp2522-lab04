@@ -10,7 +10,7 @@ package ca.bcit.comp2522.lab4;
  * @author Yuho Lim
  * @version 1.0
  */
-public abstract class Person implements Printable, Comparable<Person>, Reversible {
+public class Person implements Printable, Comparable<Person>, Reversible {
 
     private final Name name;
     private final Date dateOfBirth;
@@ -58,6 +58,15 @@ public abstract class Person implements Printable, Comparable<Person>, Reversibl
         return name;
     }
 
+    /**
+     * Gets the date of death of the person. If the person is still alive, this will return null.
+     *
+     * @return the date of death, or null if the person is still alive
+     */
+    public Date getDateOfDeath() {
+        return dateOfDeath;
+    }
+
     public Date getDateOfBirth()
     {
         return dateOfBirth;
@@ -90,6 +99,12 @@ public abstract class Person implements Printable, Comparable<Person>, Reversibl
     @Override
     public int compareTo(final Person other) {
         return other.dateOfBirth.compareTo(this.dateOfBirth);
+    }
+
+    @Override
+    public String toString() {
+        return name.getFullName() + " (Born: " + dateOfBirth +
+                (dateOfDeath != null ? ", Died: " + dateOfDeath : ", Still alive") + ")";
     }
 
     /**

@@ -12,7 +12,7 @@ package ca.bcit.comp2522.lab4;
  * @version 1.0
  */
 
-public abstract class Date implements Comparable<Date> {
+public class Date implements Comparable<Date> {
 
     // Creating static variables to set a range of year.
     private static final int STARTING_YEAR = 1;
@@ -391,6 +391,12 @@ public abstract class Date implements Comparable<Date> {
 
         return dayOfWeek;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%04d-%02d-%02d", year, month, day);
+    }
+
 
     /**
      * Compares this Date object with the specified Date object for order.
