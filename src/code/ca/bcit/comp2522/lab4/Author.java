@@ -22,7 +22,8 @@ public class Author extends Person implements Printable {
      */
     public Author(final Name name,
                   final Date dateOfBirth,
-                  final Date dateOfDeath) {
+                  final Date dateOfDeath,
+                  final String genre) {
 
         super(name, dateOfBirth, dateOfDeath);
 
@@ -65,4 +66,6 @@ public class Author extends Person implements Printable {
 
         System.out.println(authorInformation.toString());
     }
+
+
 }

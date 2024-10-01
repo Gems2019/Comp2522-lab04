@@ -1,3 +1,8 @@
+package ca.bcit.comp2522.lab4;
+
+import ca.bcit.comp2522.lab4.Printable;
+import ca.bcit.comp2522.lab4.Reversible;
+
 import java.time.Year;
 import java.util.Objects;
 

@@ -1,6 +1,6 @@
 package ca.bcit.comp2522.lab4;
 
-public abstract class Name {
+public class Name {
     private final String firstName;
     private final String lastName;
     private static final int NAME_LEN= 50;
