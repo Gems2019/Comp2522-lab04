@@ -67,9 +67,9 @@ public abstract class Date implements Comparable<Date> {
      * @param day   will be assigned to the instance data: day
      */
     public Date(final int year, final int month, final int day) {
-        isYearValid(year);
-        isMonthValid(month);
-        isDayValid(year, month, day);
+        validateYear(year);
+        validateMonth(month);
+        validateDate(year, month, day);
 
         this.year = year;
         this.month = month;
@@ -181,7 +181,7 @@ public abstract class Date implements Comparable<Date> {
      * @param year check if the year is valid
      * @throws IllegalArgumentException if the month is out of range and empty
      */
-    private static void isYearValid(final int year) throws IllegalArgumentException {
+    private static void validateYear(final int year) throws IllegalArgumentException {
         if (STARTING_YEAR > year || CURRENT_YEAR < year) {
             throw new IllegalArgumentException("You must enter the correct year");
         }
@@ -203,7 +203,7 @@ public abstract class Date implements Comparable<Date> {
      * @param month check if the month is valid
      * @throws IllegalArgumentException if the month is null or blank
      */
-    private static void isMonthValid(final int month) throws IllegalArgumentException {
+    private static void validateMonth(final int month) throws IllegalArgumentException {
 
         if (JAN > month || DEC < month) {
             throw new IllegalArgumentException("You must enter the month between " + JAN + "  to 12");
@@ -215,7 +215,7 @@ public abstract class Date implements Comparable<Date> {
      * @param day check if the day is valid
      * @throws IllegalArgumentException if the day is out of range
      */
-    private static void isDayValid(final int year, final int month, final int day) throws IllegalArgumentException {
+    private static void validateDate(final int year, final int month, final int day) throws IllegalArgumentException {
         final int maxDaysOfMonth;
 
         maxDaysOfMonth = numbOfDaysInMonth(month, year);

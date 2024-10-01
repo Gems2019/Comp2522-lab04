@@ -1,9 +1,10 @@
 package ca.bcit.comp2522.lab4;
 
-public abstract class Name {
+public abstract class Name implements Printable
+{
     private final String firstName;
     private final String lastName;
-    private static final int NAME_LEN= 50;
+    private static final int NAME_LEN = 50;
 
 
     public Name(final String firstName, final String lastName) {
@@ -22,6 +23,10 @@ public abstract class Name {
      */
     public final String getFullName() {
         return firstName + " " + lastName;
+    }
+
+    public final void display(){
+        System.out.println(getFullName());
     }
 
     private static void validateFirstName(final String firstName) {
