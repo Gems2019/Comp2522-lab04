@@ -101,6 +101,12 @@ public class Person implements Printable, Comparable<Person>, Reversible {
         return other.dateOfBirth.compareTo(this.dateOfBirth);
     }
 
+    @Override
+    public String toString() {
+        return name.getFullName() + " (Born: " + dateOfBirth +
+                (dateOfDeath != null ? ", Died: " + dateOfDeath : ", Still alive") + ")";
+    }
+
     /**
      * Displays the full details of the person, including their full name, date of birth,
      * and date of death (or indicates if still alive).

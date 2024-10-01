@@ -392,6 +392,12 @@ public class Date implements Comparable<Date> {
         return dayOfWeek;
     }
 
+    @Override
+    public String toString() {
+        return String.format("%04d-%02d-%02d", year, month, day);
+    }
+
+
     /**
      * Compares this Date object with the specified Date object for order.
      * Returns a negative integer, zero, or a positive integer as this Date

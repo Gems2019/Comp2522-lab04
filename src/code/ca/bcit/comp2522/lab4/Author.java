@@ -49,6 +49,12 @@ public class Author extends Person implements Printable {
         }
     }
 
+    @Override
+    public String toString() {
+        return getName().getFullName() + " (Genre: " + genre + ")";
+    }
+
+
     /**
      * Displays the details of the author including name, date of birth, and genre.
      * Implements the display method from the Printable interface.

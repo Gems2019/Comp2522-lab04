@@ -36,5 +36,15 @@ public class Name {
         }
     }
 
+    /**
+     * Overrides the toString method to return the full name.
+     *
+     * @return the full name in "First Last" format
+     */
+    @Override
+    public String toString() {
+        return getFullName();
+    }
+
 
 }
