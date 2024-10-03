@@ -29,11 +29,9 @@ public class Book implements Comparable<Book>, Printable, Reversible
     /**
      * Constructs a new {@code Book} with the specified title, year of publication, and author.
      *
-     * @param title         the title of the book, must not be null, blank, or exceed 100 characters
-     * @param yearPublished the year the book was published, must be between 1 and the current year
+     * @param title         the title of the book, must not be null, blank, or exceed a hundred characters
+     * @param yearPublished the year the book was published, must be between one and the current year
      * @param author        the author of the book, must not be null
-     * @throws IllegalArgumentException if the title is invalid, if the yearPublished is invalid,
-     *                                  or if the author is null
      */
     public Book(final String title,
                 final int yearPublished,
@@ -74,7 +72,6 @@ public class Book implements Comparable<Book>, Printable, Reversible
      *
      * @param yearPublished the year to validate
      * @return the validated year
-     * @throws IllegalArgumentException if the year is less than 1 or greater than the current year
      */
     private static int validateYearPublished(final int yearPublished)
     {
@@ -95,7 +92,6 @@ public class Book implements Comparable<Book>, Printable, Reversible
      *
      * @param author the author to validate
      * @return the validated author
-     * @throws IllegalArgumentException if the author is null
      */
     private static Author validateAuthor(final Author author)
     {

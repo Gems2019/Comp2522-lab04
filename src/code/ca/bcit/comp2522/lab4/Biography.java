@@ -31,7 +31,6 @@ public class Biography extends Book implements Printable
      * @param yearPublished the year the biography was published.
      * @param author        the author of the biography.
      * @param subject       the person the biography is about.
-     * @throws IllegalArgumentException if the subject is null.
      */
     public Biography(final String title,
                      final int yearPublished,
@@ -47,7 +46,6 @@ public class Biography extends Book implements Printable
      *
      * @param subject the person the biography is about.
      * @return the validated subject if not null.
-     * @throws IllegalArgumentException if the subject is null.
      */
     private static Person validateSubject(final Person subject)
     {
@@ -72,11 +70,11 @@ public class Biography extends Book implements Printable
     }
 
     /**
-     * Compares this biography with the specified object for equality.
+     * Checks if this Biography is equal to another object.
      * Two biographies are considered equal if they are about the same subject.
      *
-     * @param obj the object to be compared.
-     * @return {@code true} if the specified object is equal to this biography, otherwise {@code false}.
+     * @param obj the object to compare with
+     * @return true if the objects are equal, false otherwise
      */
     @Override
     public boolean equals(Object obj)
@@ -106,8 +104,8 @@ public class Biography extends Book implements Printable
     }
 
     /**
-     * Prints all instance variables including the subject of the biography.
-     * This method is an implementation of the {@link Printable} interface.
+     * Displays all instance variables of this Biography, including the subject.
+     * This method implements the Printable interface.
      */
     @Override
     public void display()

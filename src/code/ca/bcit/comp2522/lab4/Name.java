@@ -63,7 +63,6 @@ public class Name
      * Validates the first name, ensuring it is not null, blank, or longer than {@value NAME_LEN}.
      *
      * @param firstName the first name to be validated
-     * @throws IllegalArgumentException if the first name is invalid
      */
     private static void validateFirstName(final String firstName)
     {
@@ -80,7 +79,6 @@ public class Name
      * Validates the last name, ensuring it is not null, blank, or longer than {@value NAME_LEN}.
      *
      * @param lastName the last name to be validated
-     * @throws IllegalArgumentException if the last name is invalid
      */
     private static void validateLastName(final String lastName)
     {

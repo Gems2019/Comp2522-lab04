@@ -2,7 +2,7 @@ package ca.bcit.comp2522.lab4;
 
 /**
  * Represents an abstract Person with a name, date of birth, and date of death.
- * Implements Printable, Comparable&lt;Person&gt;, and Reversible interfaces.
+ * Implements Printable, Comparable;Person;, and Reversible interfaces.
  * The Person class is designed to be inherited by more specific person types.
  * Provides functionality to compare persons by their date of birth, display details,
  * and print the reversed full name.
@@ -28,7 +28,6 @@ public class Person implements Printable, Comparable<Person>, Reversible
      * @param name        the name of the person
      * @param dateOfBirth the date of birth of the person
      * @param dateOfDeath the date of death of the person, or null if still alive
-     * @throws IllegalArgumentException if the name or date of birth is null
      */
     public Person(final Name name,
                   final Date dateOfBirth,
@@ -47,7 +46,6 @@ public class Person implements Printable, Comparable<Person>, Reversible
      * Validates that the date of birth is not null.
      *
      * @param dateOfBirth the date of birth to validate
-     * @throws IllegalArgumentException if dateOfBirth is null
      */
     private void validateDateOfBirth(final Date dateOfBirth)
     {
@@ -94,7 +92,6 @@ public class Person implements Printable, Comparable<Person>, Reversible
      * Validates that the name is not null.
      *
      * @param name the name to validate
-     * @throws IllegalArgumentException if the name is null
      */
     private void validateName(final Name name)
     {

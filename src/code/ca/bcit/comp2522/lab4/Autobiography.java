@@ -41,6 +41,7 @@ public class Autobiography extends Biography
         System.out.println("Year Published: " + getYearPublished());
         System.out.println("Author and Subject: " + getAuthor().getName() + " " + getAuthor().getName());
         System.out.println("Author's Date of Birth: " + getAuthor().getDateOfBirth());
+
         if(getAuthor().getDateOfDeath() != null)
         {
             System.out.println("Author's Date of Death: " + getAuthor().getDateOfDeath());
