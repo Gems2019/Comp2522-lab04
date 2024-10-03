@@ -6,11 +6,14 @@ package ca.bcit.comp2522.lab4;
  * Implements the Printable interface to display author details.
  *
  * @author Yuho Lim
+ * @author Daniil Yarygin
+ * @author Kyle Lau
+ * @author Gem Baojimin Sha
  * @version 1.0
  */
 public class Author extends Person implements Printable {
-
-    private String genre;
+    private static final int MAX_GENRE_LENGTH = 30;
+    private final String genre;
 
     /**
      * Constructs an Author object with the specified name, date of birth, and date of death.
@@ -41,18 +44,29 @@ public class Author extends Person implements Printable {
     private void validateGenre(final String genre) {
 
         if (genre == null || genre.isBlank()) {
+
             throw new IllegalArgumentException("Genre must be filled up");
+
         }
 
-        if (genre.length() > 30) {
-            throw new IllegalArgumentException("Genre must be less than 30 characters");
+        if (genre.length() > MAX_GENRE_LENGTH) {
+
+            throw new IllegalArgumentException("Genre must be less than " + MAX_GENRE_LENGTH + " characters");
+
         }
     }
 
+    /**
+     * Returns a string representation of the object, including the full name and genre.
+     *
+     * @return a string in the format of "{fullName} (Genre: {genre})", where fullName is retrieved
+     *         from the Name class using the getFullName() method and genre represents the genre of the object.
+     */
     @Override
     public String toString() {
         return getName().getFullName() + " (Genre: " + genre + ")";
     }
+
 
 
     /**
@@ -61,7 +75,8 @@ public class Author extends Person implements Printable {
      */
     @Override
     public void display() {
-        StringBuilder authorInformation = new StringBuilder();
+        final StringBuilder authorInformation;
+        authorInformation = new StringBuilder();
 
         authorInformation.append("Name : ")
                 .append(getName().getFullName())

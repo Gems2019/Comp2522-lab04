@@ -2,12 +2,15 @@ package ca.bcit.comp2522.lab4;
 
 /**
  * Represents an abstract Person with a name, date of birth, and date of death.
- * Implements Printable, Comparable<Person>, and Reversible interfaces.
+ * Implements Printable, Comparable&lt;Person&gt;, and Reversible interfaces.
  * The Person class is designed to be inherited by more specific person types.
  * Provides functionality to compare persons by their date of birth, display details,
  * and print the reversed full name.
  *
  * @author Yuho Lim
+ * @author Daniil Yarygin
+ * @author Kyle Lau
+ * @author Gem Baojimin Sha
  * @version 1.0
  */
 public class Person implements Printable, Comparable<Person>, Reversible {
@@ -46,20 +49,33 @@ public class Person implements Printable, Comparable<Person>, Reversible {
      */
     private void validateDateOfBirth(final Date dateOfBirth){
 
-        if(dateOfBirth == null){
+        if (dateOfBirth == null) {
 
             throw new IllegalArgumentException("Enter the date of birth");
 
         }
-
     }
 
-    public Name getName(){
+    /**
+     * Returns the name of the person.
+     *
+     * @return the name of the person
+     */
+    public Name getName() {
         return name;
     }
 
     /**
-     * Gets the date of death of the person. If the person is still alive, this will return null.
+     * Returns the date of birth of the person.
+     *
+     * @return the date of birth of the person
+     */
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    /**
+     * Returns the date of death of the person. If the person is still alive, this will return null.
      *
      * @return the date of death, or null if the person is still alive
      */
@@ -67,25 +83,19 @@ public class Person implements Printable, Comparable<Person>, Reversible {
         return dateOfDeath;
     }
 
-    public Date getDateOfBirth()
-    {
-        return dateOfBirth;
-    }
-
     /**
      * Validates that the name is not null.
      *
      * @param name the name to validate
-     * @throws IllegalArgumentException if name is null
+     * @throws IllegalArgumentException if the name is null
      */
-    private void validateName(final Name name){
+    private void validateName(final Name name) {
 
-        if(name == null){
+        if (name == null) {
 
             throw new IllegalArgumentException("Enter the name of the person");
 
         }
-
     }
 
     /**
@@ -101,6 +111,12 @@ public class Person implements Printable, Comparable<Person>, Reversible {
         return other.dateOfBirth.compareTo(this.dateOfBirth);
     }
 
+    /**
+     * Returns a string representation of the person, including their full name, date of birth,
+     * and date of death (or indicates if still alive).
+     *
+     * @return the string representation of the person
+     */
     @Override
     public String toString() {
         return name.getFullName() + " (Born: " + dateOfBirth +
@@ -109,28 +125,36 @@ public class Person implements Printable, Comparable<Person>, Reversible {
 
     /**
      * Displays the full details of the person, including their full name, date of birth,
-     * and date of death (or indicates if still alive).
+     * and date of death. If the person is still alive, it indicates "Still alive"
+     * instead of a date of death.
+     * <p>
+     * The full name is retrieved using the {@code getFullName()} method from the {@code Name} class,
+     * and both the date of birth and date of death (if applicable) are displayed.
      */
     @Override
-    public void display(){
-        StringBuilder sb = new StringBuilder();
+    public void display() {
+        final StringBuilder display;
+        display = new StringBuilder();
 
-        sb.append("Name : ")
-            .append(name.getFullName())
-            .append(", Date of birth : ")
-            .append(dateOfBirth)
-            .append(", Date of death : ")
-            .append(dateOfDeath == null ? "Still alive" : dateOfDeath);
+        display.append("Name : ")
+                .append(name.getFullName())
+                .append(", Date of birth : ")
+                .append(dateOfBirth)
+                .append(", Date of death : ")
+                .append(dateOfDeath == null ? "Still alive" : dateOfDeath);
 
-        System.out.println(sb.toString());
+        System.out.println(display.toString());
     }
 
     /**
      * Reverses the full name of the person and prints it.
+     * The full name is retrieved using the {@code getFullName()} method from the {@code Name} class,
+     * and the reversed version of the name is printed to the console.
      */
     @Override
-    public void backward(){
-        StringBuilder sb = new StringBuilder(name.getFullName());
-        System.out.println(sb.reverse().toString());
+    public void backward() {
+        final StringBuilder backward;
+        backward = new StringBuilder(name.getFullName());
+        System.out.println(backward.reverse().toString());
     }
 }

@@ -4,6 +4,12 @@ package ca.bcit.comp2522.lab4;
  * The Autobiography class represents a type of book where the subject and author are the same person.
  * This class extends the Biography class and automatically sets the subject to the author.
  * Implements Printable to display information and Reversible to print the title backward.
+ *
+ * @author Yuho Lim
+ * @author Daniil Yarygin
+ * @author Kyle Lau
+ * @author Gem Baojimin Sha
+ * @version 1.0
  */
 public class Autobiography extends Biography {
 
@@ -15,7 +21,9 @@ public class Autobiography extends Biography {
      * @param yearPublished The year the autobiography was published, must be between year 1 and the current year.
      * @param author The author of the autobiography, must not be null. The subject will be automatically set to this author.
      */
-    public Autobiography(String title, int yearPublished, Author author) {
+    public Autobiography(final String title,
+                         final int yearPublished,
+                         final Author author) {
         super(title, yearPublished, author, author);
     }
 
@@ -39,7 +47,8 @@ public class Autobiography extends Biography {
      */
     @Override
     public void backward() {
-        StringBuilder reversedTitle = new StringBuilder(getTitle());
+        final StringBuilder reversedTitle;
+        reversedTitle = new StringBuilder(getTitle());
         System.out.println("Reversed Title: " + reversedTitle.reverse());
     }
 }

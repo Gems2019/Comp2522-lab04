@@ -5,6 +5,9 @@ package ca.bcit.comp2522.lab4;
  * Any class that implements this interface must provide an implementation for the backward method.
  *
  * @author Yuho Lim
+ * @author Daniil Yarygin
+ * @author Kyle Lau
+ * @author Gem Baojimin Sha
  * @version 1.0
  */
 public interface Reversible {

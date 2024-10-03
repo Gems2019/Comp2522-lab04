@@ -1,10 +1,40 @@
 package ca.bcit.comp2522.lab4;
 
+/**
+ * The Main class serves as the entry point for creating and comparing different types of books:
+ * Books, Biographies, and Autobiographies. It demonstrates the functionality of various classes
+ * including `Book`, `Biography`, `Autobiography`, `Author`, `Person`, and `Name`.
+ *
+ * <p>In the main method, several books, biographies, and autobiographies are created,
+ * and different comparisons between them are made. The program uses the following features:
+ * <ul>
+ *     <li>Creating instances of `Book`, `Biography`, and `Autobiography`</li>
+ *     <li>Comparing books by year of publication</li>
+ *     <li>Comparing authors by birthdate</li>
+ *     <li>Comparing biographies by subject (Person)</li>
+ *     <li>Displaying details of each book, biography, and autobiography using the `Printable` interface</li>
+ *     <li>Printing book titles and author names backward using the `Reversible` interface</li>
+ * </ul>
+ *
+ * @author Yuho Lim
+ * @author Daniil Yarygin
+ * @author Kyle Lau
+ * @author Gem Baojimin Sha
+ * @version 1.0
+ */
 public class Main {
 
-    public static void main(String[] args) {
+    /**
+     * The main method of the program. It creates several books, biographies, and autobiographies,
+     * performs various comparisons, and prints details of the objects.
+     *
+     * @param args the command-line arguments (not used in this program)
+     */
+    public static void main(final String[] args) {
 
-        // Create 5 Books
+        // Creating instances of Book, Biography, and Autobiography.
+
+        // 5 Books
         Book book1 = new Book("1984", 1949, new Author(new Name("George", "Orwell"),
                 new Date(1903, 6, 25), null, "Dystopian Fiction"));
 
@@ -20,7 +50,7 @@ public class Main {
         Book book5 = new Book("Moby-Dick", 1851, new Author(new Name("Herman", "Melville"),
                 new Date(1819, 8, 1), new Date(1891, 9, 28), "Adventure"));
 
-        // Create 5 Biographies
+        // 5 Biographies
         Biography bio1 = new Biography("The Power Broker", 1974, new Author(new Name("Robert", "Caro"),
                 new Date(1935, 10, 30), null, "Biography"),
                 new Person(new Name("Robert", "Moses"), new Date(1888, 12, 18),
@@ -53,7 +83,7 @@ public class Main {
                         new Date(1879, 3, 14),
                         new Date(1955, 4, 18)));
 
-        // Create 5 Autobiographies
+        // 5 Autobiographies
         Autobiography auto1 = new Autobiography("The Diary of a Young Girl", 1947,
                 new Author(new Name("Anne", "Frank"), new Date(1929, 6, 12),
                         new Date(1945, 3, 31), "Memoir"));
@@ -75,17 +105,16 @@ public class Main {
                         new Date(1925, 5, 19),
                         new Date(1965, 2, 21), "Memoir"));
 
-        // Comparisons and printing
-        // Compare books by yearPublished
+        // Comparing books by year of publication
         System.out.println("Comparing book1 and book2 by year: " + book1.compareTo(book2));
 
-        // Compare authors by birthdate
+        // Comparing authors by birthdate
         System.out.println("Comparing author of book1 and book2 by birthdate: " + book1.getAuthor().compareTo(book2.getAuthor()));
 
-        // Compare biographies by subjects
+        // Comparing biographies by subjects (Person)
         System.out.println("Comparing bio1 and bio2 by subjects: " + bio1.getSubject().compareTo(bio2.getSubject()));
 
-        // Use Printable to print details for each object
+        // Displaying details for each book, biography, and autobiography
         System.out.println("\nPrinting details of each book:");
         book1.display();
         book2.display();
@@ -107,7 +136,7 @@ public class Main {
         auto4.display();
         auto5.display();
 
-        // Use Reversible to print the book titles and author names backward
+        // Reversing book titles and author names
         System.out.println("\nPrinting book titles and author names backward:");
         book1.backward();
         book2.backward();
@@ -116,3 +145,4 @@ public class Main {
         book5.backward();
     }
 }
+

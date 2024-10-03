@@ -7,8 +7,10 @@ package ca.bcit.comp2522.lab4;
  * getDayOfTheWeek() between the every step)
  * Lastly, printing the date in two different formats ("YYYY-MM-DD" and "Month(in String) DD, YYYY").
  *
- * @author Gem Baojimin sha
  * @author Yuho Lim
+ * @author Daniil Yarygin
+ * @author Kyle Lau
+ * @author Gem Baojimin Sha
  * @version 1.0
  */
 
@@ -45,19 +47,10 @@ public class Date implements Comparable<Date> {
     private static final int NOV = 11;
     private static final int DEC = 12;
 
-    // Creating static variables to assign starting and ending year of 1800s and 2000s.
-    private static final int STARTING_YEAR_OF_1800S = 1800;
-    final int ENDING_YEAR_OF_1800S = 1899;
-    final int STARTING_YEAR_OF_2000S = 2000;
-
     // Creating variables to get day, month, and year.
     private final int day;
     private final int month;
     private final int year;
-
-    private static final int zero = 0;
-    private static final int hundred = 100;
-    private static final int twelve = 12;
 
     /**
      * Creating a constructor.
@@ -144,7 +137,11 @@ public class Date implements Comparable<Date> {
      * @param day check if the day is valid
      * @throws IllegalArgumentException if the day is out of range
      */
-    private static void validateDate(final int year, final int month, final int day) throws IllegalArgumentException {
+    private static void validateDate(final int year,
+                                     final int month,
+                                     final int day)
+                                    throws IllegalArgumentException {
+
         final int maxDaysOfMonth;
 
         maxDaysOfMonth = numbOfDaysInMonth(month, year);
@@ -160,7 +157,9 @@ public class Date implements Comparable<Date> {
      * @param year take different number of days in February and check if it's leap year
      * @return the number of days
      */
-    private static int numbOfDaysInMonth(final int month, final int year) throws IllegalArgumentException{
+    private static int numbOfDaysInMonth(final int month,
+                                         final int year)
+                                        throws IllegalArgumentException{
 
         switch (month) {
             case JAN:
@@ -183,12 +182,18 @@ public class Date implements Comparable<Date> {
         }
     }
 
-
+    /**
+     * Returns a string representation of the date in the format "YYYY-MM-DD".
+     * <p>
+     * The year, month, and day are formatted to always display four digits for the year,
+     * and two digits for both the month and day.
+     *
+     * @return a string in the format "YYYY-MM-DD", representing the date.
+     */
     @Override
     public String toString() {
         return String.format("%04d-%02d-%02d", year, month, day);
     }
-
 
     /**
      * Compares this Date object with the specified Date object for order.

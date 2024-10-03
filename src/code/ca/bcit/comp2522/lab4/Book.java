@@ -1,11 +1,19 @@
 package ca.bcit.comp2522.lab4;
 
-import ca.bcit.comp2522.lab4.Printable;
-import ca.bcit.comp2522.lab4.Reversible;
-
 import java.time.Year;
 import java.util.Objects;
 
+/**
+ * Represents a book with a title, year of publication, and an author.
+ * Implements {@code Comparable<Book>}, {@code Printable}, and {@code Reversible} interfaces.
+ * Validates the title, year of publication, and author upon instantiation.
+ *
+ * @author Yuho Lim
+ * @author Daniil Yarygin
+ * @author Kyle Lau
+ * @author Gem Baojimin Sha
+ * @version 1.0
+ */
 public class Book implements Comparable<Book>, Printable, Reversible {
 
     // Constants for validation
@@ -17,92 +25,187 @@ public class Book implements Comparable<Book>, Printable, Reversible {
     private final int yearPublished;
     private final Author author;
 
-    // Constructor
-    public Book(String title, int yearPublished, Author author) {
+    /**
+     * Constructs a new {@code Book} with the specified title, year of publication, and author.
+     *
+     * @param title the title of the book, must not be null, blank, or exceed 100 characters
+     * @param yearPublished the year the book was published, must be between 1 and the current year
+     * @param author the author of the book, must not be null
+     * @throws IllegalArgumentException if the title is invalid, if the yearPublished is invalid,
+     *                                  or if the author is null
+     */
+    public Book(final String title,
+                final int yearPublished,
+                final Author author) {
         this.title = validateTitle(title);
         this.yearPublished = validateYearPublished(yearPublished);
         this.author = validateAuthor(author);
     }
 
-    // Static method to validate title
-    private static String validateTitle(String title) {
+    /**
+     * Validates the book's title.
+     *
+     * @param title the title to validate
+     * @return the validated title
+     * @throws IllegalArgumentException if the title is null, blank, or exceeds the maximum length
+     */
+    private static String validateTitle(final String title) {
+
         if (title == null || title.isBlank()) {
+
             throw new IllegalArgumentException("Title cannot be null or blank.");
         }
+
         if (title.length() > MAX_TITLE_LENGTH) {
+
             throw new IllegalArgumentException("Title cannot exceed " + MAX_TITLE_LENGTH + " characters.");
+
         }
         return title;
     }
 
-    // Static method to validate yearPublished
-    private static int validateYearPublished(int yearPublished) {
+    /**
+     * Validates the year of publication.
+     *
+     * @param yearPublished the year to validate
+     * @return the validated year
+     * @throws IllegalArgumentException if the year is less than 1 or greater than the current year
+     */
+    private static int validateYearPublished(final int yearPublished) {
+
         int currentYear = Year.now().getValue();
+
         if (yearPublished < MIN_YEAR || yearPublished > currentYear) {
+
             throw new IllegalArgumentException("Year published must be between " + MIN_YEAR + " and the current year.");
+
         }
         return yearPublished;
     }
 
-    // Static method to validate author
-    private static Author validateAuthor(Author author) {
+    /**
+     * Validates the author of the book.
+     *
+     * @param author the author to validate
+     * @return the validated author
+     * @throws IllegalArgumentException if the author is null
+     */
+    private static Author validateAuthor(final Author author) {
+
         if (author == null) {
+
             throw new IllegalArgumentException("Author cannot be null.");
+
         }
         return author;
     }
 
-    // Getters
+    /**
+     * Returns the title of the book.
+     *
+     * @return the book's title
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * Returns the year the book was published.
+     *
+     * @return the year of publication
+     */
     public int getYearPublished() {
         return yearPublished;
     }
 
+    /**
+     * Returns the author of the book.
+     *
+     * @return the author of the book
+     */
     public Author getAuthor() {
         return author;
     }
 
-    // Override toString
+    /**
+     * Returns a string representation of the book, including its title, year of publication, and author.
+     *
+     * @return a string representation of the book
+     */
     @Override
     public String toString() {
         return "Book [Title: " + title + ", Year Published: " + yearPublished + ", Author: " + author + "]";
     }
 
-    // Override equals and hashCode
+    /**
+     * Checks if this book is equal to another object. Books are considered equal if they have the same title,
+     * year of publication, and author.
+     *
+     * @param obj the object to compare to
+     * @return {@code true} if this book is equal to the specified object, {@code false} otherwise
+     */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Book book = (Book) obj;
+
+        if (this == obj) {
+
+            return true;
+
+        }
+
+        if (obj == null || getClass() != obj.getClass()){
+
+            return false;
+
+        }
+
+        Book book;
+        book = (Book) obj;
+
         return yearPublished == book.yearPublished &&
-               Objects.equals(title, book.title) &&
-               Objects.equals(author, book.author);
+                Objects.equals(title, book.title) &&
+                Objects.equals(author, book.author);
     }
 
+    /**
+     * Returns a hash code for this book based on its title, year of publication, and author.
+     *
+     * @return a hash code value for this book
+     */
     @Override
     public int hashCode() {
         return Objects.hash(title, yearPublished, author);
     }
 
-    // Comparable implementation: Older books are "larger"
+    /**
+     * Compares this book to another book by the year of publication. Older books are considered "larger."
+     *
+     * @param other the book to compare to
+     * @return a negative integer, zero, or a positive integer as this book is older than, the same age as,
+     *         or newer than the specified book
+     */
     @Override
     public int compareTo(Book other) {
         return Integer.compare(other.yearPublished, this.yearPublished);  // Older books are "larger"
     }
 
-    // Printable interface implementation: Print all instance variables
+    /**
+     * Prints the details of the book, including its title, year of publication, and author.
+     */
     @Override
     public void display() {
-        System.out.println("Title: " + title + ", Year Published: " + yearPublished + ", Author: " + author);
+        System.out.println("Title: " + title + ", Year Published: " + yearPublished +
+                ", Author: " + author);
     }
 
-    // Reversible interface implementation: Print the title backward
+    /**
+     * Prints the title of the book in reverse order.
+     */
     @Override
     public void backward() {
-        StringBuilder reversedTitle = new StringBuilder(title);
+        final StringBuilder reversedTitle;
+        reversedTitle = new StringBuilder(title);
         System.out.println(reversedTitle.reverse().toString());
     }
 }
+
