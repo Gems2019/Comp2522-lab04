@@ -22,7 +22,8 @@ package ca.bcit.comp2522.lab4;
  * @author Gem Baojimin Sha
  * @version 1.0
  */
-public class Main {
+public class Main
+{
 
     /**
      * The main method of the program. It creates several books, biographies, and autobiographies,
@@ -30,7 +31,8 @@ public class Main {
      *
      * @param args the command-line arguments (not used in this program)
      */
-    public static void main(final String[] args) {
+    public static void main(final String[] args)
+    {
 
         // Creating instances of Book, Biography, and Autobiography.
 
@@ -109,7 +111,8 @@ public class Main {
         System.out.println("Comparing book1 and book2 by year: " + book1.compareTo(book2));
 
         // Comparing authors by birthdate
-        System.out.println("Comparing author of book1 and book2 by birthdate: " + book1.getAuthor().compareTo(book2.getAuthor()));
+        System.out.println(
+                "Comparing author of book1 and book2 by birthdate: " + book1.getAuthor().compareTo(book2.getAuthor()));
 
         // Comparing biographies by subjects (Person)
         System.out.println("Comparing bio1 and bio2 by subjects: " + bio1.getSubject().compareTo(bio2.getSubject()));

@@ -10,7 +10,8 @@ package ca.bcit.comp2522.lab4;
  * @author Gem Baojimin Sha
  * @version 1.0
  */
-public interface Reversible {
+public interface Reversible
+{
 
     /**
      * Reverses the details of an object.

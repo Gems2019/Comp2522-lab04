@@ -14,7 +14,8 @@ package ca.bcit.comp2522.lab4;
  * @version 1.0
  */
 
-public class Date implements Comparable<Date> {
+public class Date implements Comparable<Date>
+{
 
     // Creating static variables to set a range of year.
     private static final int STARTING_YEAR = 1;
@@ -59,7 +60,8 @@ public class Date implements Comparable<Date> {
      * @param month will be assigned to the instance data: month
      * @param day   will be assigned to the instance data: day
      */
-    public Date(final int year, final int month, final int day) {
+    public Date(final int year, final int month, final int day)
+    {
         validateYear(year);
         validateMonth(month);
         validateDate(year, month, day);
@@ -74,7 +76,8 @@ public class Date implements Comparable<Date> {
      *
      * @return year
      */
-    public int getYear() {
+    public int getYear()
+    {
         return year;
     }
 
@@ -83,7 +86,8 @@ public class Date implements Comparable<Date> {
      *
      * @return month
      */
-    public int getMonth() {
+    public int getMonth()
+    {
         return month;
 
     }
@@ -93,7 +97,8 @@ public class Date implements Comparable<Date> {
      *
      * @return day
      */
-    public int getDay() {
+    public int getDay()
+    {
         return day;
 
     }
@@ -103,8 +108,10 @@ public class Date implements Comparable<Date> {
      * @param year check if the year is valid
      * @throws IllegalArgumentException if the month is out of range and empty
      */
-    private static void validateYear(final int year) throws IllegalArgumentException {
-        if (STARTING_YEAR > year || CURRENT_YEAR < year) {
+    private static void validateYear(final int year) throws IllegalArgumentException
+    {
+        if(STARTING_YEAR > year || CURRENT_YEAR < year)
+        {
             throw new IllegalArgumentException("You must enter the correct year");
         }
     }
@@ -114,7 +121,8 @@ public class Date implements Comparable<Date> {
      * @param year check if the year is leap year
      * @return false if the year is not leap year
      */
-    private static boolean isLeapYear(final int year) {
+    private static boolean isLeapYear(final int year)
+    {
 
         return (year % LEAP_YEAR_DIVISIBLE_BY_FOURHUNDRED == NO_REMAINDER ||
                 (year % LEAP_YEAR_DIVISIBLE_BY_FOUR == NO_REMAINDER && year % LEAP_YEAR_DIVISIBLE_BY_HUNDRED != NO_REMAINDER));
@@ -125,9 +133,11 @@ public class Date implements Comparable<Date> {
      * @param month check if the month is valid
      * @throws IllegalArgumentException if the month is null or blank
      */
-    private static void validateMonth(final int month) throws IllegalArgumentException {
+    private static void validateMonth(final int month) throws IllegalArgumentException
+    {
 
-        if (JAN > month || DEC < month) {
+        if(JAN > month || DEC < month)
+        {
             throw new IllegalArgumentException("You must enter the month between " + JAN + "  to 12");
         }
     }
@@ -140,13 +150,15 @@ public class Date implements Comparable<Date> {
     private static void validateDate(final int year,
                                      final int month,
                                      final int day)
-                                    throws IllegalArgumentException {
+            throws IllegalArgumentException
+    {
 
         final int maxDaysOfMonth;
 
         maxDaysOfMonth = numbOfDaysInMonth(month, year);
 
-        if (FIRST_MONTH > day || maxDaysOfMonth < day) {
+        if(FIRST_MONTH > day || maxDaysOfMonth < day)
+        {
             throw new IllegalArgumentException("You must enter the correct day");
         }
     }
@@ -159,9 +171,11 @@ public class Date implements Comparable<Date> {
      */
     private static int numbOfDaysInMonth(final int month,
                                          final int year)
-                                        throws IllegalArgumentException{
+            throws IllegalArgumentException
+    {
 
-        switch (month) {
+        switch(month)
+        {
             case JAN:
             case MAR:
             case MAY:
@@ -191,7 +205,8 @@ public class Date implements Comparable<Date> {
      * @return a string in the format "YYYY-MM-DD", representing the date.
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         return String.format("%04d-%02d-%02d", year, month, day);
     }
 
@@ -202,19 +217,22 @@ public class Date implements Comparable<Date> {
      *
      * @param other the Date object to be compared
      * @return a negative integer if this Date is earlier than the specified Date,
-     *         zero if both dates are the same, or a positive integer if this Date
-     *         is later than the specified Date
+     * zero if both dates are the same, or a positive integer if this Date
+     * is later than the specified Date
      */
     @Override
-    public int compareTo(final Date other) {
+    public int compareTo(final Date other)
+    {
 
-        if (this.year != other.year) {
+        if(this.year != other.year)
+        {
 
             return Integer.compare(this.year, other.year);
 
         }
 
-        if (this.month != other.month) {
+        if(this.month != other.month)
+        {
 
             return Integer.compare(this.month, other.month);
 

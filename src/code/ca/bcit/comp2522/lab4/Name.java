@@ -14,25 +14,33 @@ package ca.bcit.comp2522.lab4;
  * @author Gem Baojimin Sha
  * @version 1.0
  */
-public class Name {
-    /** The first name of the person. */
+public class Name
+{
+    /**
+     * The first name of the person.
+     */
     private final String firstName;
 
-    /** The last name of the person. */
+    /**
+     * The last name of the person.
+     */
     private final String lastName;
 
-    /** The maximum length allowed for first and last names. */
+    /**
+     * The maximum length allowed for first and last names.
+     */
     private static final int NAME_LEN = 50;
 
     /**
      * Constructs a {@code Name} object with the specified first and last names.
      *
      * @param firstName the first name of the person
-     * @param lastName the last name of the person
+     * @param lastName  the last name of the person
      * @throws IllegalArgumentException if the first or last name is null, blank, or exceeds 50 characters
      */
     public Name(final String firstName,
-                final String lastName) {
+                final String lastName)
+    {
 
         validateFirstName(firstName);
         validateLastName(lastName);
@@ -46,7 +54,8 @@ public class Name {
      *
      * @return the full name as a string in the format "firstName lastName"
      */
-    public final String getFullName() {
+    public final String getFullName()
+    {
         return firstName + " " + lastName;
     }
 
@@ -56,9 +65,11 @@ public class Name {
      * @param firstName the first name to be validated
      * @throws IllegalArgumentException if the first name is invalid
      */
-    private static void validateFirstName(final String firstName) {
+    private static void validateFirstName(final String firstName)
+    {
 
-        if (firstName == null || firstName.isBlank() || firstName.length() > NAME_LEN) {
+        if(firstName == null || firstName.isBlank() || firstName.length() > NAME_LEN)
+        {
 
             throw new IllegalArgumentException("bad First Name: " + firstName);
 
@@ -71,9 +82,11 @@ public class Name {
      * @param lastName the last name to be validated
      * @throws IllegalArgumentException if the last name is invalid
      */
-    private static void validateLastName(final String lastName) {
+    private static void validateLastName(final String lastName)
+    {
 
-        if (lastName == null || lastName.isBlank() || lastName.length() > NAME_LEN) {
+        if(lastName == null || lastName.isBlank() || lastName.length() > NAME_LEN)
+        {
 
             throw new IllegalArgumentException("bad Last Name: " + lastName);
 
@@ -86,7 +99,8 @@ public class Name {
      * @return the full name as a string
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         return getFullName();
     }
 }

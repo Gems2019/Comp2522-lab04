@@ -4,7 +4,7 @@ package ca.bcit.comp2522.lab4;
  * The Biography class represents a book that provides an account of a person's life.
  * It extends the {@link Book} class and implements the {@link Printable} interface.
  * A Biography has a subject, which is the person the biography is about.
- *
+ * <p>
  * The class provides methods to access the subject, validate the subject, and
  * print all instance variables including the subject.
  * It overrides {@code equals()}, {@code hashCode()}, {@code toString()}
@@ -16,7 +16,8 @@ package ca.bcit.comp2522.lab4;
  * @author Gem Baojimin Sha
  * @version 1.0
  */
-public class Biography extends Book implements Printable {
+public class Biography extends Book implements Printable
+{
 
     /**
      * The person that the biography is about.
@@ -26,16 +27,17 @@ public class Biography extends Book implements Printable {
     /**
      * Constructs a Biography object with the given title, year published, author, and subject.
      *
-     * @param title the title of the biography.
+     * @param title         the title of the biography.
      * @param yearPublished the year the biography was published.
-     * @param author the author of the biography.
-     * @param subject the person the biography is about.
+     * @param author        the author of the biography.
+     * @param subject       the person the biography is about.
      * @throws IllegalArgumentException if the subject is null.
      */
     public Biography(final String title,
                      final int yearPublished,
                      final Author author,
-                     final Person subject) {
+                     final Person subject)
+    {
         super(title, yearPublished, author); // Call the parent class (Book) constructor
         this.subject = validateSubject(subject);
     }
@@ -47,9 +49,11 @@ public class Biography extends Book implements Printable {
      * @return the validated subject if not null.
      * @throws IllegalArgumentException if the subject is null.
      */
-    private static Person validateSubject(final Person subject) {
+    private static Person validateSubject(final Person subject)
+    {
 
-        if (subject == null) {
+        if(subject == null)
+        {
 
             throw new IllegalArgumentException("Subject cannot be null.");
 
@@ -62,7 +66,8 @@ public class Biography extends Book implements Printable {
      *
      * @return the subject of the biography.
      */
-    public Person getSubject() {
+    public Person getSubject()
+    {
         return subject;
     }
 
@@ -74,11 +79,14 @@ public class Biography extends Book implements Printable {
      * @return {@code true} if the specified object is equal to this biography, otherwise {@code false}.
      */
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    public boolean equals(Object obj)
+    {
+        if(this == obj)
+        {
             return true;
         }
-        if (!(obj instanceof Biography)) {
+        if(!(obj instanceof Biography))
+        {
             return false;
         }
         Biography otherBiography;
@@ -92,7 +100,8 @@ public class Biography extends Book implements Printable {
      * @return the hash code value.
      */
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return subject.hashCode();
     }
 
@@ -101,7 +110,8 @@ public class Biography extends Book implements Printable {
      * This method is an implementation of the {@link Printable} interface.
      */
     @Override
-    public void display() {
+    public void display()
+    {
         System.out.println("Title: " + getTitle() + ", Year Published: " + getYearPublished() +
                 ", Author: " + getAuthor() + ", Subject: " + subject);
     }
@@ -113,7 +123,8 @@ public class Biography extends Book implements Printable {
      * @return a string representation of the biography.
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Biography [Title: " + getTitle() + ", Year Published: " + getYearPublished() +
                 ", Author: " + getAuthor() + ", Subject: " + subject + "]";
     }

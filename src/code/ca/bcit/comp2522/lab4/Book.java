@@ -14,7 +14,8 @@ import java.util.Objects;
  * @author Gem Baojimin Sha
  * @version 1.0
  */
-public class Book implements Comparable<Book>, Printable, Reversible {
+public class Book implements Comparable<Book>, Printable, Reversible
+{
 
     // Constants for validation
     private static final int MAX_TITLE_LENGTH = 100;
@@ -28,15 +29,16 @@ public class Book implements Comparable<Book>, Printable, Reversible {
     /**
      * Constructs a new {@code Book} with the specified title, year of publication, and author.
      *
-     * @param title the title of the book, must not be null, blank, or exceed 100 characters
+     * @param title         the title of the book, must not be null, blank, or exceed 100 characters
      * @param yearPublished the year the book was published, must be between 1 and the current year
-     * @param author the author of the book, must not be null
+     * @param author        the author of the book, must not be null
      * @throws IllegalArgumentException if the title is invalid, if the yearPublished is invalid,
      *                                  or if the author is null
      */
     public Book(final String title,
                 final int yearPublished,
-                final Author author) {
+                final Author author)
+    {
         this.title = validateTitle(title);
         this.yearPublished = validateYearPublished(yearPublished);
         this.author = validateAuthor(author);
@@ -49,14 +51,17 @@ public class Book implements Comparable<Book>, Printable, Reversible {
      * @return the validated title
      * @throws IllegalArgumentException if the title is null, blank, or exceeds the maximum length
      */
-    private static String validateTitle(final String title) {
+    private static String validateTitle(final String title)
+    {
 
-        if (title == null || title.isBlank()) {
+        if(title == null || title.isBlank())
+        {
 
             throw new IllegalArgumentException("Title cannot be null or blank.");
         }
 
-        if (title.length() > MAX_TITLE_LENGTH) {
+        if(title.length() > MAX_TITLE_LENGTH)
+        {
 
             throw new IllegalArgumentException("Title cannot exceed " + MAX_TITLE_LENGTH + " characters.");
 
@@ -71,11 +76,13 @@ public class Book implements Comparable<Book>, Printable, Reversible {
      * @return the validated year
      * @throws IllegalArgumentException if the year is less than 1 or greater than the current year
      */
-    private static int validateYearPublished(final int yearPublished) {
+    private static int validateYearPublished(final int yearPublished)
+    {
 
         int currentYear = Year.now().getValue();
 
-        if (yearPublished < MIN_YEAR || yearPublished > currentYear) {
+        if(yearPublished < MIN_YEAR || yearPublished > currentYear)
+        {
 
             throw new IllegalArgumentException("Year published must be between " + MIN_YEAR + " and the current year.");
 
@@ -90,9 +97,11 @@ public class Book implements Comparable<Book>, Printable, Reversible {
      * @return the validated author
      * @throws IllegalArgumentException if the author is null
      */
-    private static Author validateAuthor(final Author author) {
+    private static Author validateAuthor(final Author author)
+    {
 
-        if (author == null) {
+        if(author == null)
+        {
 
             throw new IllegalArgumentException("Author cannot be null.");
 
@@ -105,7 +114,8 @@ public class Book implements Comparable<Book>, Printable, Reversible {
      *
      * @return the book's title
      */
-    public String getTitle() {
+    public String getTitle()
+    {
         return title;
     }
 
@@ -114,7 +124,8 @@ public class Book implements Comparable<Book>, Printable, Reversible {
      *
      * @return the year of publication
      */
-    public int getYearPublished() {
+    public int getYearPublished()
+    {
         return yearPublished;
     }
 
@@ -123,7 +134,8 @@ public class Book implements Comparable<Book>, Printable, Reversible {
      *
      * @return the author of the book
      */
-    public Author getAuthor() {
+    public Author getAuthor()
+    {
         return author;
     }
 
@@ -133,7 +145,8 @@ public class Book implements Comparable<Book>, Printable, Reversible {
      * @return a string representation of the book
      */
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Book [Title: " + title + ", Year Published: " + yearPublished + ", Author: " + author + "]";
     }
 
@@ -145,15 +158,18 @@ public class Book implements Comparable<Book>, Printable, Reversible {
      * @return {@code true} if this book is equal to the specified object, {@code false} otherwise
      */
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj)
+    {
 
-        if (this == obj) {
+        if(this == obj)
+        {
 
             return true;
 
         }
 
-        if (obj == null || getClass() != obj.getClass()){
+        if(obj == null || getClass() != obj.getClass())
+        {
 
             return false;
 
@@ -173,7 +189,8 @@ public class Book implements Comparable<Book>, Printable, Reversible {
      * @return a hash code value for this book
      */
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return Objects.hash(title, yearPublished, author);
     }
 
@@ -182,10 +199,11 @@ public class Book implements Comparable<Book>, Printable, Reversible {
      *
      * @param other the book to compare to
      * @return a negative integer, zero, or a positive integer as this book is older than, the same age as,
-     *         or newer than the specified book
+     * or newer than the specified book
      */
     @Override
-    public int compareTo(Book other) {
+    public int compareTo(Book other)
+    {
         return Integer.compare(other.yearPublished, this.yearPublished);  // Older books are "larger"
     }
 
@@ -193,7 +211,8 @@ public class Book implements Comparable<Book>, Printable, Reversible {
      * Prints the details of the book, including its title, year of publication, and author.
      */
     @Override
-    public void display() {
+    public void display()
+    {
         System.out.println("Title: " + title + ", Year Published: " + yearPublished +
                 ", Author: " + author);
     }
@@ -202,7 +221,8 @@ public class Book implements Comparable<Book>, Printable, Reversible {
      * Prints the title of the book in reverse order.
      */
     @Override
-    public void backward() {
+    public void backward()
+    {
         final StringBuilder reversedTitle;
         reversedTitle = new StringBuilder(title);
         System.out.println(reversedTitle.reverse().toString());
